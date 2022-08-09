@@ -6,7 +6,8 @@
   "author": "me",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "STAGE=development universe dev",
+    "start": "yarn run production:build && yarn run production:serve",
+    "dev": "STAGE=development universe dev",
     "beta:build": "STAGE=beta universe build",
     "beta:serve": "STAGE=beta universe serve",
     "production:build": "STAGE=production universe build",

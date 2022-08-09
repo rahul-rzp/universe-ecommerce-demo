@@ -1,4 +1,5 @@
 import React from 'react';
+import VercelLogo from '../../../static/vercel.svg';
 // import styles from '../../styles/Home.module.css';
 
 function Footer() {
@@ -12,7 +13,7 @@ function Footer() {
       >
         Powered by{' '}
         <span>
-          <img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          <img src={VercelLogo} alt="Vercel Logo" width={72} height={16} />
         </span>
       </a>
     </footer>

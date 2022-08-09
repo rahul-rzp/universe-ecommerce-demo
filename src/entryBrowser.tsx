@@ -10,6 +10,7 @@ import hydrateApp from './shared/services/hydrateApp';
 import env from './env';
 
 import App from './app';
+import './styles/global.css';
 
 if (env.STAGE !== 'development' && env.UNIVERSE_PUBLIC_SENTRY_DSN) {
   errorService.init({

@@ -10,6 +10,7 @@ import abMiddleware from './shared/services/abMiddleware';
 import identityMiddleware from './shared/services/identityMiddleware';
 import renderMiddleware from './shared/services/renderMiddleware';
 import env from './env';
+import './styles/global.css';
 
 if (env.STAGE !== 'development' && env.UNIVERSE_PUBLIC_SENTRY_DSN) {
   errorService.init({

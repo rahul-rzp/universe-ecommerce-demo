@@ -35,7 +35,10 @@ const app = (
         </BrowserRouter>
       </QueryClientProvider>
       {/* <Helmet>
-        <link rel="stylesheet" href={styles} />
+        <link
+          rel="stylesheet"
+          href="https://nextjs-ecommerce-ssr.vercel.app/_next/static/css/6c19512649113719.css"
+        />
       </Helmet> */}
     </HelmetProvider>
   </ErrorBoundary>

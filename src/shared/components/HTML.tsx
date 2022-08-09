@@ -30,6 +30,10 @@ const HTML = ({
             {helmet.title.toComponent()}
             {helmet.meta.toComponent()}
             {helmet.link.toComponent()}
+            {/* <link
+              rel="stylesheet"
+              href="https://nextjs-ecommerce-ssr.vercel.app/_next/static/css/6c19512649113719.css"
+            /> */}
             {helmet.script.toComponent()}
           </>
         )}

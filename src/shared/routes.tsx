@@ -4,7 +4,9 @@ import { callAPI } from '../home/Home';
 
 // These will create separate JS bundles
 const Home = loadable(() => import('../home/Home'));
-const About = loadable(() => import('../about/About'));
+const Csr = loadable(() => import('../csr/csr'));
+const SSRSkeleton = loadable(() => import('../ssr/ssr-skeleton'));
+const SSRReactQuery = loadable(() => import('../ssr/ssr-react-query'));
 
 type Route = {
   path: string;
@@ -19,7 +21,9 @@ type Routes = Route[];
 
 export const paths = {
   HOME: '/',
-  ABOUT: '/about',
+  CSR: '/csr',
+  SSRSkeleton: '/ssr-skeleton',
+  SSRReactQuery: '/ssr-react-query',
 };
 
 const HOUR = 60 * 60;
@@ -34,9 +38,21 @@ export const routes: Routes = [
     fetchData: (queryClient) => queryClient.prefetchQuery(['product'], callAPI),
   },
   {
-    path: paths.ABOUT,
-    element: <About />,
-    loadableChunk: About,
+    path: paths.CSR,
+    element: <Csr />,
+    loadableChunk: Csr,
     cacheExpirySeconds: 24 * HOUR,
   },
+  {
+    path: paths.SSRSkeleton,
+    element: <SSRSkeleton />,
+    loadableChunk: SSRSkeleton,
+    cacheExpirySeconds: 24 * HOUR,
+  },
+  // {
+  //   path: paths.SSRReactQuery,
+  //   element: <SSRReactQuery />,
+  //   loadableChunk: SSRReactQuery,
+  //   cacheExpirySeconds: 24 * HOUR,
+  // },
 ];

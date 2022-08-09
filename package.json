@@ -6,7 +6,6 @@
   "author": "me",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "yarn run production:build && yarn run production:serve",
     "dev": "STAGE=development universe dev",
     "beta:build": "STAGE=beta universe build",
     "beta:serve": "STAGE=beta universe serve",
@@ -20,7 +19,8 @@
     "lint:secretlint": "universe secretlint \"**/*\"",
     "prettier": "universe prettier -- --write .",
     "version-update": "changeset version",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "vercel-build": "yarn run production:build && yarn run production:serve"
   },
   "dependencies": {
     "@loadable/component": "5.14.1",

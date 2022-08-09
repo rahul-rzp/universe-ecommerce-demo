@@ -1,9 +1,9 @@
 {
-  "name": "universe-ecommerce-demo",
-  "description": "FE Universe - Ecommerce Demo",
-  "repository": "https://github.com/razorpay/universe-ecommerce-demo",
+  "name": "scaffold-universe-ecommerce-poc",
+  "description": "asdas",
+  "repository": "https://github.com/razorpay/ecommerce-ssr",
   "version": "1.0.0",
-  "author": "rahul.makhija@razorpay.com",
+  "author": "me",
   "license": "UNLICENSED",
   "scripts": {
     "start": "STAGE=development universe dev",
@@ -24,31 +24,34 @@
   "dependencies": {
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.2",
+    "@razorpay/universe-cli": "9.0.5",
+    "@tanstack/react-query": "^4.0.10",
+    "axios": "^0.27.2",
     "chalk": "4.1.0",
     "compression": "1.7.4",
     "connect-slashes": "1.4.0",
+    "ioredis": "4.27.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "ioredis": "4.27.3",
     "react-helmet-async": "1.0.9",
     "react-router-dom": "6.3.0",
     "uuid": "8.3.2",
-    "@razorpay/universe-cli": "9.0.5"
+    "zustand": "^4.0.0"
   },
   "devDependencies": {
     "@sentry/webpack-plugin": "1.16.0",
-    "@types/react": "17.0.3",
-    "@types/react-dom": "17.0.2",
-    "@types/node": "14.14.33",
-    "@types/ioredis": "4.26.4",
     "@types/compression": "1.7.0",
     "@types/connect-slashes": "0.0.31",
     "@types/express": "4.17.11",
+    "@types/http-proxy": "1.17.6",
+    "@types/ioredis": "4.26.4",
     "@types/loadable__component": "5.13.3",
     "@types/loadable__server": "5.12.5",
-    "@types/webpack-env": "1.16.0",
-    "@types/http-proxy": "1.17.6",
-    "@types/uuid": "8.3.0"
+    "@types/node": "14.14.33",
+    "@types/react": "17.0.3",
+    "@types/react-dom": "17.0.2",
+    "@types/uuid": "8.3.0",
+    "@types/webpack-env": "1.16.0"
   },
   "resolutions": {
     "@types/react": "17.0.3",

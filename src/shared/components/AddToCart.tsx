@@ -11,7 +11,7 @@ const AddToCart = ({ productId, price }) => {
     console.log(isFound);
     setIsAdded(Boolean(isFound));
     setQuantity(isFound ? isFound.quantity : 0);
-  }, [cart]);
+  }, [cart, productId]);
 
   const handleIncreaseQuantity = () => {
     addToCart({ _id: productId, price });

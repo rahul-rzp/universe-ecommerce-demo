@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { loadableReady } from '@loadable/component';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import errorService from '@razorpay/universe-cli/errorService';
 import ErrorBoundary from '@razorpay/universe-cli/errorService/ErrorBoundary';
 import hydrateApp from './shared/services/hydrateApp';
@@ -19,12 +20,16 @@ if (env.STAGE !== 'development' && env.UNIVERSE_PUBLIC_SENTRY_DSN) {
 }
 
 const root = document.getElementById('root');
+const queryClient = new QueryClient();
+hydrate(queryClient, window.__REACT_QUERY_STATE__);
 const app = (
   <ErrorBoundary>
     <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </QueryClientProvider>
     </HelmetProvider>
   </ErrorBoundary>
 );

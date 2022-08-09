@@ -1,5 +1,6 @@
 import React from 'react';
 import loadable, { LoadableComponent } from '@loadable/component';
+import { callAPI } from '../home/Home';
 
 // These will create separate JS bundles
 const Home = loadable(() => import('../home/Home'));
@@ -30,6 +31,7 @@ export const routes: Routes = [
     loadableChunk: Home,
     cacheExpirySeconds: 1 * HOUR,
     isABEnabled: true,
+    fetchData: (queryClient) => queryClient.prefetchQuery(['product'], callAPI),
   },
   {
     path: paths.ABOUT,

@@ -1,38 +1,26 @@
-import React, { useState } from 'react';
-import loadable from '@loadable/component';
-import errorService from '@razorpay/universe-cli/errorService';
-import YusKid from '../../static/yus-kid.png';
-import Logo from '../../static/razorpay-logo.svg';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import Products from '../shared/components/Products';
 
-// This will create a separate JS bundle
-const SampleComponent = loadable(() => import('./SampleComponent'));
+export const callAPI = async () => {
+  console.log('log..');
+  const res = await axios.get('https://nodejs-ecommerce-crud-api.vercel.app/products');
+  return res.data;
+};
+// import styles from '../styles/Home.module.css';
 
-const Home = (): JSX.Element => {
-  const [count, setCount] = useState(0);
-  const [crashState, setCrashState] = useState<null | { text: string }>({
-    text: 'Crash the UI',
-  });
+function ProductsCSR() {
+  const { data, error, isLoading } = useQuery(['product'], callAPI, { staleTime: 5000 });
+
+  if (isLoading) return 'Loading...';
+  if (error) return 'Something went wrong';
 
   return (
-    <main>
-      <h1>Home</h1>
-      <p>Cool kids in the town</p>
-      <img src={Logo} height="100px" alt="RZP Logo" />
-      <img src={YusKid} height="100px" alt="Yusss Kid" />
-      <br />
-      <button onClick={(): void => setCount((prevCount) => prevCount + 1)}>GG {count}</button>
-      <button onClick={(): void => setCrashState(null)}>
-        {
-          //@ts-expect-error - Error created intentionally
-          crashState.text
-        }
-      </button>
-      <button onClick={(): void => errorService.captureError('Testing errors')}>
-        Capture an error
-      </button>
-      <SampleComponent />
-    </main>
+    <div id="products">
+      <Products data={data} />
+    </div>
   );
-};
+}
 
-export default Home;
+export default ProductsCSR;

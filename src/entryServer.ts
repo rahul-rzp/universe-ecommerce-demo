@@ -28,7 +28,7 @@ const app = makeApp({
 
 app.use(compression());
 app.use(identityMiddleware());
-app.use(abMiddleware());
+// app.use(abMiddleware());
 // force trailing slashes with a 301 redirect
 app.use(slashes(true));
 app.use(renderMiddleware());

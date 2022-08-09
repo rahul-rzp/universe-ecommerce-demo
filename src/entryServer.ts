@@ -11,6 +11,7 @@ import identityMiddleware from './shared/services/identityMiddleware';
 import renderMiddleware from './shared/services/renderMiddleware';
 import env from './env';
 import './styles/global.css';
+// import styles from './styles/global.css';
 
 if (env.STAGE !== 'development' && env.UNIVERSE_PUBLIC_SENTRY_DSN) {
   errorService.init({

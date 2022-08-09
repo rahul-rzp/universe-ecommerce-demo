@@ -17,33 +17,36 @@ const HTML = ({
   linkTags,
   styleTags,
   helmetContext: { helmet },
-}: Props): JSX.Element => (
-  <html lang="en">
-    <head>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      {helmet && (
-        <>
-          {helmet.base.toComponent()}
-          {helmet.title.toComponent()}
-          {helmet.meta.toComponent()}
-          {helmet.link.toComponent()}
-          {helmet.script.toComponent()}
-        </>
-      )}
-      {linkTags}
-      {styleTags}
-    </head>
-    <body>
-      <div
-        id="root"
-        dangerouslySetInnerHTML={{
-          __html: children,
-        }}
-      />
-      {scriptTags}
-    </body>
-  </html>
-);
+}: Props): JSX.Element => {
+  console.log(helmet, 'helmet');
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {helmet && (
+          <>
+            {helmet.base.toComponent()}
+            {helmet.title.toComponent()}
+            {helmet.meta.toComponent()}
+            {helmet.link.toComponent()}
+            {helmet.script.toComponent()}
+          </>
+        )}
+        {linkTags}
+        {styleTags}
+      </head>
+      <body>
+        <div
+          id="root"
+          dangerouslySetInnerHTML={{
+            __html: children,
+          }}
+        />
+        {scriptTags}
+      </body>
+    </html>
+  );
+};
 
 export default HTML;

@@ -18,7 +18,6 @@ const HTML = ({
   styleTags,
   helmetContext: { helmet },
 }: Props): JSX.Element => {
-  console.log(helmet, 'helmet');
   return (
     <html lang="en">
       <head>
@@ -30,10 +29,6 @@ const HTML = ({
             {helmet.title.toComponent()}
             {helmet.meta.toComponent()}
             {helmet.link.toComponent()}
-            {/* <link
-              rel="stylesheet"
-              href="https://nextjs-ecommerce-ssr.vercel.app/_next/static/css/6c19512649113719.css"
-            /> */}
             {helmet.script.toComponent()}
           </>
         )}

@@ -9,6 +9,7 @@ import { ChunkExtractor } from '@loadable/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { matchRoutes } from 'react-router-dom';
 import { HelmetProvider, HelmetContext } from 'react-helmet-async';
+import { ServerStyleSheet } from 'styled-components';
 import isEmpty from '@razorpay/universe-cli/isEmpty';
 import {
   dehydrate,
@@ -22,6 +23,8 @@ import { callAPI } from '../../home/Home';
 import HTML from '../components/HTML';
 import App from '../../app';
 import { routes } from '../routes';
+import { GlobalStyles } from '../../styles';
+
 import * as redisService from './redisService';
 
 // This path is resolved from build/server where the webpack bundle is created
@@ -56,20 +59,23 @@ const generatePage = async (requestURL: string): string => {
             <StaticRouter location={requestURL}>
               <App />
             </StaticRouter>
+            <GlobalStyles />
           </Hydrate>
         </QueryClientProvider>
       </HelmetProvider>
     </ErrorBoundary>,
   );
+  const sheet = new ServerStyleSheet();
+
   const scriptTags = [
     ...extractor.getScriptElements(),
     generateReactQueryScriptElement(dehydratedState),
   ];
   const linkTags = extractor.getLinkElements();
-  const styleTags = extractor.getStyleElements();
+  // const styleTags = extractor.getStyleElements();
 
   // serializing the app populates helmetContext with all head meta information
-  const serializedApp = renderToString(app);
+  const serializedApp = renderToString(sheet.collectStyles(app));
 
   return `<!doctype html>
   ${renderToStaticMarkup(
@@ -77,7 +83,7 @@ const generatePage = async (requestURL: string): string => {
     <HTML
       scriptTags={scriptTags}
       linkTags={linkTags}
-      styleTags={styleTags}
+      styleTags={sheet.getStyleElement()}
       helmetContext={helmetContext}
     >
       {serializedApp}

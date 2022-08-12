@@ -6,7 +6,9 @@
   "author": "me",
   "license": "UNLICENSED",
   "scripts": {
+    "start": "yarn run dev",
     "dev": "STAGE=development universe dev",
+    "build": "yarn run vercel-build",
     "beta:build": "STAGE=beta universe build",
     "beta:serve": "STAGE=beta universe serve",
     "production:build": "STAGE=production universe build",
@@ -37,6 +39,7 @@
     "react-helmet-async": "1.0.9",
     "react-loading-skeleton": "^3.1.0",
     "react-router-dom": "6.3.0",
+    "styled-components": "^5.3.5",
     "uuid": "8.3.2",
     "zustand": "^4.0.0"
   },
@@ -52,8 +55,10 @@
     "@types/node": "14.14.33",
     "@types/react": "17.0.3",
     "@types/react-dom": "17.0.2",
+    "@types/styled-components": "^5.1.26",
     "@types/uuid": "8.3.0",
-    "@types/webpack-env": "1.16.0"
+    "@types/webpack-env": "1.16.0",
+    "babel-plugin-styled-components": "^2.0.7"
   },
   "resolutions": {
     "@types/react": "17.0.3",

@@ -10,7 +10,8 @@ import hydrateApp from './shared/services/hydrateApp';
 import env from './env';
 
 import App from './app';
-import './styles/global.css';
+import { GlobalStyles } from './styles';
+// import './styles/global.css';
 // import styles from '../static/global.css';
 // console.log(styles, 'stylezzz');
 
@@ -33,6 +34,7 @@ const app = (
         <BrowserRouter>
           <App />
         </BrowserRouter>
+        <GlobalStyles />
       </QueryClientProvider>
       {/* <Helmet>
         <link
